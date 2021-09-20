@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Memasak Air</title>
+    </head>
+    <body>
+        <p id="name">Langkah-langkah memasak air</p>
+        <ol id="daftar">
+            <li id="awal">Masukkan air ke dalam wadah.</li>
+            <li id="akhir">Matikan kompor.</li>
+        </ol>
+        <hr size="2" width="95%" color="black">
+
+        <script>
+            
+            const daftar = document.getElementById("daftar");
+            const newElement = document.createElement("li");
+            const elemenAwal = document.createElement("li");
+            const itemAwal = document.getElementById("awal");
+
+            newElement.innerText = "Selamat Menikmati!";
+            daftar.appendChild(newElement); 
+            // AppenChild() Fungsinya adalah menambahkan sebuah elemen HTML pada bagian paling akhir dari sebuah elemen yang kita gunakan untuk memanggil method ini
+            
+            elemenAwal.innerText = "Hidupkan Kompor.";
+            daftar.insertBefore(elemenAwal, itemAwal); // value elemenAwal akan di masukkan sebelum itemAwal
+            // insertBefore() memberikan kemampuan untuk memasukkan elemen sebelum elemen HTML tertentu selama elemen parent-nya masih bisa diakses, sama seperti method appendChild().
+
+
+
+
+
+
+
+
+
+
+        </script>
+    </body>
+</html>

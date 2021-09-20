@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            
+        }
+        div {
+            margin: 0 10px;
+            display: grid;
+            place-content: center;
+            text-align: center;
+        }
+        .satu, .dua, .tiga {
+            width: 300px;
+            height: 300px;
+            background: burlywood;
+        }
+        .dua {
+            padding: 50px;
+        }
+        .tiga {
+            padding: 50px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="satu"><p>Ini ukuran asli 300px x 300px</p></div>
+    <div class="dua">Ini sudah ditambahkan padding ini sudah berubah bukan lagi 300px x 300px karena sudah ada padding</div>
+    <div class="tiga">Ini sudah ditambahankan padding dan box-sizing:border-box; ukuran tetap 300px x 300px</div>
+</body>
+</html>

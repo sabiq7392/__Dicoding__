@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Dicoding</title>
+</head>
+<style>
+
+</style>
+<body>
+
+
+
+
+    <script>
+
+        // ================== Switch Case Statement
+
+        let language = "French";
+        let greeting = null;
+
+        switch (language) {  
+        // cara membacanya, jika language = english maka good morning
+            case "English":
+                greeting = "Good Morning!";
+                break;
+            case "French":
+                greeting = "Bonjour!";
+                break;
+            case "Japanese":
+                greeting = "Ohayou Gozaimasu!";
+                break;
+            default:
+                greeting = "Selamat Pagi!";
+        }
+
+        //console.log(greeting);
+
+        /* output
+        Bonjour!
+        */
+
+
+
+        // ================== Looping / Perulangan
+
+        // ===== For
+
+        let myArray = ["Luke", "Han", "Chewbacca", "Leia"];
+
+        for(const arrayItem of myArray) {
+            //console.log(arrayItem)
+        }
+
+        /* output
+        Luke
+        Han
+        Chewbacca
+        Leia
+        */
+
+
+        // ===== While
+
+        let z = 1;
+
+        while (z <= 5) { // while lebih cocok digunakan pada kasus di mana kita tidak tahu pasti berapa banyak perulangan yang diperlukan.
+        //console.log(z);
+        z++;
+        }
+
+
+        // ===== Do While
+
+        let i = 1;
+
+        do {
+        //console.log(i);
+        i++;
+        } while (i <= 5);
+
+        /* 
+        Kondisi pada while akan dievaluasi sebelum blok kode di 
+        dalamnya dijalankan, sedangkan 
+
+        do-while akan mengevaluasi 
+        boolean expression setelah blok kodenya berjalan. Ini artinya 
+        kode di dalam do-while akan dijalankan setidaknya satu kali.
+        */
+
+       
+
+        // ================== Statement & Expression
+
+        let weTry = "siap";
+        // we try adalah statement dan "siapa adalah expression"
+
+        // Statement menunjukkan aksi yang dilakukan.
+        // Expression merupakan kode yang menghasilkan nilai.
+        
+
+
+        //=================== Quiz Object
+
+        const restaurant = {
+            name: "Ristorante",
+            city: "Jakarta",
+            "favorite drink": "Lemon Tea",
+            "favorite food": "Macaroni",
+            isVegan: false
+        }
+
+        let name = restaurant.name;
+        let favoriteDrink = restaurant["favorite drink"];
+
+        //console.log(restaurant["favorite drink"]);
+
+        
+
+        //=================== Array
+
+        // ===== Posh & Pop
+
+        const choose = ["sabiq", "dea", "devita"];
+        choose.push("devitas"); // push untuk menambahkan data ke dalam di akhir array
+        choose.pop(); //  pop untuk mengeluarkan data atau elemen terakhir dari array
+        //console.log(choose);
+
+
+        // ===== Shift & Unshift
+
+        const iLike = ["Cokelat", 42.5, 22, true, "Programming"];
+
+        iLike.shift(); // shift() digunakan untuk mengeluarkan elemen pertama dari array
+        iLike.unshift("Apple"); // unshift() digunakan untuk menambahkan elemen di awal array.
+
+        //console.log(iLike);
+        /* output
+        [ 'Apple', 42.5, 22, true, 'Programming' ]
+        */
+
+        delete iLike[1]; // delete menghapus data dari array bisa juga di object
+
+        //console.log(iLike);
+        /* output
+        [ 'Apple', <1 empty item>, 22, true, 'Programming' ]
+        */
+  
+        // ===== Quiz Array
+
+        /**
+         * TODO:
+         * Buatlah sebuah variabel dengan nama evenNumber yang merupakan sebuah array dengan ketentuan:
+         *   - Array tersebut menampung bilangan genap dari 1 hingga 100
+         *
+         * Catatan:
+         *   - Agar lebih mudah, gunakanlah for loop dan logika if untuk mengisi bilangan genap pada array.
+         */
+
+        const evenNumber = [];
+
+        for (let evNum = 1; evNum <= 100; evNum++){
+            if (evNum % 2 == 0){
+                evenNumber.push(evNum);
+                //console.log(evenNumber);
+            }
+        }
+
+        
+
+        // ===================== Function
+
+        // ===== Declaration Function
+
+        function decGreeting(decName, decLanguage) {
+            if(decLanguage === "English") {
+                return "Good Morning " + decName + "!";
+            } else if (decLanguage === "French") {
+                return "Bonjour " + decName + "!";
+            } else {
+                return "Selamat Pagi " + decName + "!";
+            }
+        }
+
+        let greetingMessage = decGreeting("Harry", "French");
+        //console.log(greetingMessage);
+
+        /* output
+        Bonjour Harry!
+        */
+
+
+        // ===== Expression Function
+
+       const expGreeting = function(expName, expLanguage) {
+            if(expLanguage === "English") {
+                return "Good Morning " + name + "!";
+            } else if (expLanguage === "French") {
+                return "Bonjour " + name + "!";
+            } else {
+                return "Selamat Pagi " + name + "!";
+            }
+        }
+
+        // console.log(expGreeting('Ron', 'English'));
+
+        /* output
+        Good Morning Ron!
+        */
+
+
+        // ===== Quiz Function
+
+        /* TODO:
+        * 1. Buatlah fungsi bernama minimal dengan ketentuan berikut:
+        *    - Menerima dua buah argumen number, a dan b.
+        *    - Mengembalikan nilai terkecil antara a atau b.
+        *    - Bila nilai keduanya sama, maka kembalikan dengan nilai a
+        *
+        *    contoh:
+        *    minimal(1, 4) // 1
+        *    minimal(3, 2) // 2
+        *    minimal(3, 3) // 3
+        *
+        * 2. Buatlah fungsi bernama power dengan ketentuan berikut:
+        *    - Menerima dua buah argumen number, a dan b.
+        *    - Mengembalikan nilai dari hasil perkalian a * a sebanyak b (fungsi kuadrat).
+        *
+        *    contoh:
+        *    power(7, 3) // 343
+        *    power(3, 3) // 27
+        *    power(4, 0.5) // 2
+        */
+
+        function minimal(a, b){
+            if (a < b){
+                return a;
+            }
+            else if (a > b){
+                return b;
+            }
+            else if (a === b){
+                return a;
+            }
+        }   
+	    let minResult = minimal(10, 2);
+        console.log(minResult);
+
+        // =====
+
+        function power(a, b) {
+            return a ** b;
+        }
+
+        let powResult = power(3, 3);
+        console.log(powResult);
+
+
+    </script>
+</body>
+</html>

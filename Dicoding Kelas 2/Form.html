@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Form World</title>
+        <style>
+            .contents{
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                border: 1px solid black;
+                border-width:2px;
+                padding : 15px;
+            }
+            .form-element{
+                margin: 8px;
+                align-items: left;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="contents">
+            <h2 align="center"><b>Input Event Form</b></h2>
+            <div class="formContent">
+                <form id="formDataDiri" autocomplete="off">
+                    <div class="form-element" id="fieldName">
+                        <label for="nama">Nama Panggilan:</label><br>
+                        <input id="inputNamaPanggilan" type="text" name="nama" placeholder="Nama panggilan Anda"  maxlength="15"><br>
+                        <label id="notifikasiSisaKarakter">Sisa karakter : <span id="sisaKarakter"></span></label>
+                    </div>
+                    <div class="form-element" id="fieldCopy">
+                        <label for="copy"><i>Copy</i> tulisan ini:</label><br>
+                        <input id="inputCopy" type="text" name="copy" value="Hello World!" disabled><br>
+                    </div>
+                    <div class="form-element" id="fieldPaste">
+                        <label for="paste"><i>Paste</i> tulisan di sini:</label><br>
+                        <input id="inputPaste" type="text" name="paste" placeholder="Paste sesuatu di sini"><br>
+                    </div>
+                    <div class="form-element" id="fieldCaptcha">
+                        <label for="captcha">Tulis <i>captcha</i> berikut:</label><br>
+                        <img src="https://i.ibb.co/yy59QPB/Captcha.png" alt="Captcha"><br>
+                        <input id="inputCaptcha" type="text" name="captcha" placeholder="Tulis captcha di sini"><br>
+                        <p>Tekan Enter pada keyboard jika sudah selesai menulis <i>captcha</i></p>
+                    </div>
+                    <div class="form-element" align= "center">
+                        <input id="submitButton" type="submit" value="Submit Data" disabled>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function (){
+                const inputMaxLengthOnLoad = document.getElementById("inputNamaPanggilan").maxLength;
+                document.getElementById("sisaKarakter").innerText = inputMaxLengthOnLoad;
+                document.getElementById("notifikasiSisaKarakter").style.visibility = "hidden"; // membuat notif sisa karakter hilang
+            });
+
+            const inputName = document.getElementById("inputNamaPanggilan");
+            const notifikasiSisaKarakter = document.getElementById("notifikasiSisaKarakter");
+            inputName.addEventListener("input", function(){
+                const jumlahKarakterDiketik = inputName.value.length;
+                const jumlahKarakterMaksimal = inputName.maxLength;
+                const sisaKarakterUpdate = jumlahKarakterMaksimal - jumlahKarakterDiketik; 
+
+                document.getElementById("sisaKarakter").innerText = sisaKarakterUpdate;
+                
+                if (sisaKarakterUpdate == 0) {
+                    document.getElementById("sisaKarakter").innerText = "Batas maksimal tercapai";
+                } else if (sisaKarakterUpdate  <= 5) {
+                    notifikasiSisaKarakter.style.color = "red";
+                } else {
+                    notifikasiSisaKarakter.style.color = "black";
+                }
+
+
+            });
+            
+            inputName.addEventListener("focus", function(){
+                notifikasiSisaKarakter.style.visibility = null; // membuat notif sisa karakter muncul
+            });
+
+            inputName.addEventListener("blur", function(){
+                notifikasiSisaKarakter.style.visibility = "hidden"; // membuat notif sisa karakter hilang
+            });
+
+            const inputCaptcha = document.getElementById("inputCaptcha")
+            inputCaptcha.addEventListener("change", function(){
+                if (inputCaptcha.value == "PRNU"){
+                    document.getElementById("submitButton").removeAttribute("disabled");
+                }
+            });
+            document.getElementById("formDataDiri").addEventListener("submit", function(){
+                if(inputCaptcha.value == "PRNU"){
+                    event.preventDefault();
+                    alert("Selamat! Captcha Anda lolos :D");
+                } else {
+                    alert("Captcha Anda belum tepat");
+                    document.getElementById("submitButton").addAttribute("disabled", true);
+                }
+            })
+
+            document.getElementById("inputCopy").addEventListener("copy", function(){
+                alert("Anda telah men-copy sesuatu...");
+            });
+
+            document.getElementById("inputPaste").addEventListener("paste", function(){
+                alert("Anda telah men-paste sesuatu...");
+            });
+        </script>
+    </body>
+</html>

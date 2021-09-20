@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulating Atrribute</title>
+</head>
+<body>
+    <figure>
+        <img id="catImage" src="https://i.ibb.co/9WT6LG6/two-three.jpg" alt="three-cats" width="600px"/>
+        <figcaption id="caption">Tiga Anak Kucing</figcaption>
+    </figure>
+    
+    <script>
+        let catImage = document.querySelector("#catImage");
+        catImage.setAttribute("src", "https://i.ibb.co/55VG7vL/three-cat.jpg");
+        
+        let caption = document.querySelector("#caption");
+        caption.innerHTML = "<em>Tiga Anak Kucing</em>";
+
+        let newElement = document.createElement('p'); // untuk membuat
+        newElement.innerHTML = 'Anda menekan gambar kucing sebanyak <span id="count">0</span> kali'; // apa yang akan di cetak
+        document.body.appendChild(newElement); // untuk mencetak
+        
+        catImage.addEventListener("click", function(event) {
+            document.querySelector("#count").innerText++;
+        });
+    
+    </script>
+</body>
+</html>
